@@ -47,7 +47,7 @@ export function RsvpForm() {
       </p>
 
       {guestName ? (
-        <div className="rounded-[1.5rem] border border-gold/15 bg-gold/8 px-4 py-4">
+        <div className="rounded-[1.5rem] border border-gold/15 bg-[linear-gradient(180deg,rgba(221,186,124,0.12),rgba(221,186,124,0.04))] px-4 py-4">
           <p className="eyebrow-note">Invitation addressed to</p>
           <p className="mt-2 font-display text-2xl text-truffle">{guestName}</p>
         </div>
@@ -112,7 +112,7 @@ export function RsvpForm() {
         </label>
       </div>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 border-t border-[#ead8cd] pt-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm leading-7 text-[#776862]">
           Your response helps us prepare every detail with care. After submitting, you will be
           redirected to a thank-you page.

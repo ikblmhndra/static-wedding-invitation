@@ -29,7 +29,7 @@ export function CopyButton({ value }: CopyButtonProps) {
     <button
       type="button"
       onClick={handleCopy}
-      className="button-secondary px-4 py-2 text-[0.68rem]"
+      className="button-secondary min-w-[112px] px-4 py-2 text-[0.68rem]"
     >
       {copied ? <CopyCheck className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
       {copied ? "Copied" : "Copy"}

@@ -80,11 +80,11 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
 
   return (
     <div>
-      <div className="grid gap-4 sm:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {remaining.parts.map((part) => (
           <div
             key={part.label}
-            className="secondary-card rounded-[1.5rem] bg-white/90 px-5 py-7 text-center"
+            className="secondary-card rounded-[1.75rem] bg-white/90 px-5 py-7 text-center"
           >
             <div className="text-4xl font-display text-truffle sm:text-5xl">{part.value}</div>
             <div className="mt-3 text-[0.68rem] uppercase tracking-[0.32em] text-gold">

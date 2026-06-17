@@ -103,41 +103,60 @@ export function OpeningScreen({
         }`}
       >
         <ArtDirectedImage image={image} priority sizes="100vw" className="scale-[1.02]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,16,14,0.22),rgba(24,16,14,0.82))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,246,239,0.12),transparent_34%),linear-gradient(90deg,rgba(28,18,16,0.52),rgba(28,18,16,0.08),rgba(28,18,16,0.62))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,18,17,0.14),rgba(32,18,17,0.88))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,241,235,0.18),transparent_34%),linear-gradient(90deg,rgba(34,19,18,0.62),rgba(34,19,18,0.12),rgba(34,19,18,0.72))]" />
+        <div className="absolute inset-x-[8%] top-10 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
         <div className="relative flex min-h-[100svh] items-start px-6 py-8 sm:min-h-screen sm:items-center sm:px-10 sm:py-10 lg:px-16">
           <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div className="max-w-2xl">
-              <p className="script-accent text-white/[0.86]">For the love we have found</p>
-              <div className="editorial-shell mt-5 border-white/20 bg-white/10 px-8 py-10 text-white backdrop-blur-2xl sm:px-10 sm:py-12">
-                <div className="eyebrow-note text-white/[0.65]">{label}</div>
+              <p className="script-accent text-white/[0.9]">For the love we have found</p>
+              <div className="editorial-shell mt-5 border-white/15 bg-white/[0.12] px-8 py-10 text-white backdrop-blur-2xl sm:px-10 sm:py-12">
+                <div className="flex items-center gap-4">
+                  <span className="h-px w-12 bg-gradient-to-r from-white/0 via-white/70 to-white/0" />
+                  <div className="eyebrow-note text-white/[0.68]">{label}</div>
+                </div>
                 <GuestNameCard
                   label="Dear"
-                  className="mt-5 inline-flex max-w-full flex-col rounded-[1.5rem] border border-white/15 bg-black/10 px-5 py-4 backdrop-blur-sm"
+                  className="mt-6 inline-flex max-w-full flex-col rounded-[1.5rem] border border-white/20 bg-black/10 px-5 py-4 backdrop-blur-sm"
                   labelClassName="eyebrow-note text-white/[0.62]"
                   nameClassName="mt-2 font-display text-2xl leading-tight text-white sm:text-3xl"
                 />
-                <h1 className="mt-5 text-5xl leading-[0.92] sm:text-7xl">{names}</h1>
-                <div className="editorial-divider mt-6 bg-gradient-to-r from-white/10 via-white/[0.65] to-white/10" />
-                <p className="mt-6 max-w-xl text-base leading-8 text-white/[0.78] sm:text-lg">{quote}</p>
-                <div className="mt-8 grid gap-4 border-t border-white/[0.15] pt-6 text-sm uppercase tracking-[0.26em] text-white/[0.72] sm:grid-cols-2">
-                  <p>{dateLabel}</p>
-                  <p>{venue}</p>
+                <h1 className="mt-6 text-5xl leading-[0.88] sm:text-7xl lg:text-[5.4rem]">{names}</h1>
+                <div className="editorial-divider mt-7 bg-gradient-to-r from-white/0 via-white/[0.75] to-white/0" />
+                <p className="mt-7 max-w-xl text-base leading-8 text-white/[0.8] sm:text-lg">{quote}</p>
+                <div className="mt-8 grid gap-4 border-t border-white/[0.14] pt-6 text-sm uppercase tracking-[0.26em] text-white/[0.72] sm:grid-cols-2">
+                  <p className="leading-6">{dateLabel}</p>
+                  <p className="leading-6">{venue}</p>
                 </div>
-                <button onClick={openInvitation} className="button-primary mt-9">
-                  Open Invitation
-                </button>
+                <div className="mt-10 flex flex-wrap items-center gap-4">
+                  <button onClick={openInvitation} className="button-primary min-w-[210px]">
+                    Open Invitation
+                  </button>
+                  <p className="max-w-xs text-sm leading-7 text-white/[0.66]">
+                    A formal invitation to witness a day composed in tenderness, family, and grace.
+                  </p>
+                </div>
               </div>
             </div>
 
             <div className="hidden justify-self-end lg:block">
-              <div className="photo-frame aspect-[4/5] w-[21rem] border-white/[0.25] bg-white/[0.08] shadow-soft">
-                <ArtDirectedImage image={detailImage} sizes="21rem" className="scale-[1.01]" />
-                <div className="photo-tint absolute inset-0" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <p className="eyebrow-note text-white/[0.65]">An Evening of Grace</p>
-                  <p className="mt-3 font-display text-3xl leading-tight text-white">
-                    An editorial keepsake of a day held in warmth and devotion.
+              <div className="space-y-5">
+                <div className="rounded-[2rem] border border-white/20 bg-white/[0.08] p-4 backdrop-blur-md">
+                  <div className="photo-frame aspect-[4/5] w-[21rem] border-white/[0.2] bg-white/[0.08] shadow-soft">
+                    <ArtDirectedImage image={detailImage} sizes="21rem" className="scale-[1.01]" />
+                    <div className="photo-tint absolute inset-0" />
+                    <div className="absolute inset-x-0 bottom-0 p-6">
+                      <p className="eyebrow-note text-white/[0.68]">An Evening of Grace</p>
+                      <p className="mt-3 font-display text-3xl leading-tight text-white">
+                        An editorial keepsake of a day held in warmth and devotion.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="ml-auto max-w-[17rem] rounded-[1.8rem] border border-white/15 bg-black/10 px-6 py-5 backdrop-blur-md">
+                  <p className="eyebrow-note text-white/[0.62]">A timeless celebration</p>
+                  <p className="mt-3 font-display text-[1.9rem] leading-tight text-white">
+                    Soft florals, warm vows, and a night shaped by quiet romance.
                   </p>
                 </div>
               </div>
@@ -156,7 +175,7 @@ export function OpeningScreen({
           <button
             type="button"
             onClick={toggleAudio}
-            className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/90 bg-white/[0.82] px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-truffle shadow-card backdrop-blur-md transition-colors duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40 sm:text-sm"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/90 bg-white/[0.86] px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-truffle shadow-card backdrop-blur-md transition-colors duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40 sm:text-sm"
           >
             {playing ? <Pause className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
             {playing ? "Pause Music" : "Play Music"}
