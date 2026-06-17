@@ -28,14 +28,14 @@ export function HeroSection({ label, names, hero, bride, groom }: HeroSectionPro
 
   return (
     <section id="hero" className="relative overflow-hidden pt-28">
-      <Image
+      {/* <Image
         src="/hero-bg.svg"
         alt=""
         aria-hidden
         width={896}
         height={1232}
         className="pointer-events-none absolute left-1/2 top-[-9rem] h-auto w-[min(92vw,56rem)] -translate-x-1/2 opacity-60 mix-blend-multiply"
-      />
+      /> */}
 
       <div className="section-inner relative py-12 sm:py-20 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
