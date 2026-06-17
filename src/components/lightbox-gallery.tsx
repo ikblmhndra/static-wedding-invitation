@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import type { GalleryItem } from "@/data/invitation";
+
+import { ArtDirectedImage } from "@/components/art-directed-image";
 
 type LightboxGalleryProps = {
   items: GalleryItem[];
@@ -18,6 +19,7 @@ const spanClasses: Record<GalleryItem["span"], string> = {
 
 export function LightboxGallery({ items }: LightboxGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const activeLabel = String((activeIndex ?? 0) + 1).padStart(2, "0");
 
   const activeItem = useMemo(
     () => (activeIndex === null ? null : items[activeIndex]),
@@ -47,6 +49,17 @@ export function LightboxGallery({ items }: LightboxGalleryProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeIndex, items.length]);
 
+  useEffect(() => {
+    if (activeIndex === null) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [activeIndex]);
+
   const goNext = () => {
     setActiveIndex((current) => (current === null ? 0 : (current + 1) % items.length));
   };
@@ -57,33 +70,34 @@ export function LightboxGallery({ items }: LightboxGalleryProps) {
 
   return (
     <>
-      <div className="grid auto-rows-[220px] gap-4 md:grid-cols-3">
+      <div className="grid auto-rows-[240px] gap-4 md:grid-cols-3 md:auto-rows-[190px]">
         {items.map((item, index) => (
           <button
-            key={item.src}
+            key={item.image.src}
             type="button"
             onClick={() => setActiveIndex(index)}
-            className={`group relative overflow-hidden rounded-[1.75rem] ${spanClasses[item.span]} cursor-pointer text-left shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50`}
+            className={`group relative overflow-hidden rounded-[1.9rem] ${spanClasses[item.span]} cursor-pointer text-left shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50`}
           >
-            <Image
-              src={item.src}
-              alt={item.alt}
-              fill
+            <ArtDirectedImage
+              image={item.image}
               loading="lazy"
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+              className="transition-transform duration-300 ease-out group-hover:scale-[1.03]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,rgba(44,33,30,0.78)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(38,27,24,0.02)_10%,rgba(38,27,24,0.76)_100%)]" />
             <div className="absolute inset-x-0 bottom-0 p-5">
-              <p className="font-display text-2xl text-white">{item.caption}</p>
-              <p className="mt-1 text-sm uppercase tracking-[0.28em] text-white/75">Tap to open</p>
+              <p className="eyebrow-note text-white/[0.65]">
+                {String(index + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
+              </p>
+              <p className="mt-3 font-display text-2xl text-white">{item.caption}</p>
+              <p className="mt-2 max-w-xs text-sm leading-6 text-white/[0.76]">{item.description}</p>
             </div>
           </button>
         ))}
       </div>
 
       {activeItem ? (
-        <div className="fixed inset-0 z-50 bg-[#1d1513]/85 p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 bg-[#1d1513]/90 p-4 backdrop-blur-md">
           <div className="mx-auto flex h-full max-w-6xl items-center justify-center gap-3">
             <button
               type="button"
@@ -94,7 +108,7 @@ export function LightboxGallery({ items }: LightboxGalleryProps) {
               <ChevronLeft className="h-5 w-5" />
             </button>
 
-            <div className="relative w-full max-w-4xl overflow-hidden rounded-[2rem] border border-white/20 bg-white/10">
+            <div className="relative w-full max-w-5xl overflow-hidden rounded-[2rem] border border-white/20 bg-white/10 shadow-soft">
               <button
                 type="button"
                 onClick={() => setActiveIndex(null)}
@@ -105,19 +119,19 @@ export function LightboxGallery({ items }: LightboxGalleryProps) {
               </button>
 
               <div className="relative aspect-[4/5] w-full md:aspect-[16/10]">
-                <Image
-                  src={activeItem.src}
-                  alt={activeItem.alt}
-                  fill
-                  sizes="90vw"
-                  className="object-cover"
-                />
+                <ArtDirectedImage image={activeItem.image} sizes="90vw" priority />
+                <div className="photo-tint absolute inset-0 opacity-55" />
               </div>
 
               <div className="flex items-center justify-between gap-4 px-6 py-5 text-white">
                 <div>
+                  <p className="eyebrow-note text-white/[0.65]">
+                    {activeLabel} / {String(items.length).padStart(2, "0")}
+                  </p>
                   <p className="font-display text-2xl">{activeItem.caption}</p>
-                  <p className="mt-1 text-sm text-white/75">{activeItem.alt}</p>
+                  <p className="mt-2 max-w-2xl text-sm leading-7 text-white/[0.75]">
+                    {activeItem.description}
+                  </p>
                 </div>
                 <div className="flex gap-2 md:hidden">
                   <button

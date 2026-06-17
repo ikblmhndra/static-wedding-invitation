@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 
+import { invitationData } from "@/data/invitation";
+
 import "./globals.css";
 
+const names = `${invitationData.bride.shortName} & ${invitationData.groom.shortName}`;
+
 export const metadata: Metadata = {
-  title: "Kiara & Dimas | Wedding Invitation",
+  title: `${names} | Wedding Invitation`,
   description:
-    "A romantic and elegant wedding invitation website built with Next.js and Tailwind CSS.",
+    "A romantic and elegant wedding invitation website built for a timeless celebration.",
   applicationName: "Wedding Invitation",
   keywords: ["wedding invitation", "next.js", "tailwind css", "static site"],
   authors: [{ name: "Codex" }]

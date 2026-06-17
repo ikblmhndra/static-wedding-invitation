@@ -3,16 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --color-ivory: #fffaf5;
-  --color-cream: #f8f1e8;
-  --color-champagne: #f2e6da;
-  --color-petal: #efd7dc;
+  --color-ivory: #fff9f3;
+  --color-cream: #f4ebe1;
+  --color-champagne: #eadbc9;
+  --color-petal: #e9d4d7;
   --color-gold: #b48a4f;
-  --color-ink: #473733;
-  --color-muted: #7b6a64;
-  --font-display: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", "Book Antiqua",
+  --color-ink: #433431;
+  --color-muted: #766660;
+  --font-display: "Baskerville", "Iowan Old Style", "Palatino Linotype", "URW Palladio L",
     Georgia, serif;
   --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-accent: "Snell Roundhand", "Apple Chancery", "Segoe Script", cursive;
 }
 
 html {
@@ -22,9 +23,9 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(241, 219, 223, 0.92), transparent 34%),
-    radial-gradient(circle at top right, rgba(248, 236, 223, 0.95), transparent 36%),
-    linear-gradient(180deg, rgba(255, 250, 245, 1) 0%, rgba(249, 243, 236, 1) 100%);
+    radial-gradient(circle at top left, rgba(238, 220, 223, 0.72), transparent 32%),
+    radial-gradient(circle at 85% 12%, rgba(244, 233, 217, 0.78), transparent 26%),
+    linear-gradient(180deg, rgba(255, 249, 243, 1) 0%, rgba(247, 239, 230, 1) 48%, rgba(250, 245, 240, 1) 100%);
   color: var(--color-ink);
   font-feature-settings: "liga" 1, "kern" 1;
 }
@@ -34,11 +35,22 @@ body::before {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(transparent 96%, rgba(180, 138, 79, 0.07) 100%),
-    linear-gradient(90deg, transparent 96%, rgba(180, 138, 79, 0.07) 100%);
-  background-size: 48px 48px;
+    linear-gradient(transparent 95%, rgba(180, 138, 79, 0.05) 100%),
+    linear-gradient(90deg, transparent 95%, rgba(180, 138, 79, 0.05) 100%);
+  background-size: 56px 56px;
   content: "";
-  opacity: 0.18;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at center, transparent 54%, rgba(100, 71, 60, 0.06) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 28%);
+  content: "";
   pointer-events: none;
 }
 
@@ -66,43 +78,69 @@ textarea {
 
 @layer components {
   .section-shell {
-    @apply scroll-mt-28 py-20 sm:py-24;
+    @apply scroll-mt-28 py-20 sm:py-24 lg:py-28;
   }
 
   .section-inner {
-    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10;
   }
 
   .surface-card {
-    @apply rounded-[2rem] border border-white/70 bg-white/75 shadow-soft backdrop-blur-md;
+    @apply rounded-[2rem] border border-white/80 bg-white/80 shadow-soft backdrop-blur-md;
   }
 
   .secondary-card {
-    @apply rounded-[1.75rem] border border-[#e9dbcb] bg-[#fffdf9]/95 shadow-card;
+    @apply rounded-[1.75rem] border border-champagne/90 bg-white/95 shadow-card;
   }
 
   .button-primary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold tracking-[0.18em] text-white shadow-card transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#9f7740] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-gold-deep hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2;
   }
 
   .button-secondary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-gold/35 bg-white/75 px-6 py-3 text-sm font-semibold tracking-[0.14em] text-truffle transition-colors duration-200 ease-out hover:border-gold hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40 focus-visible:ring-offset-2;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-gold/30 bg-white/70 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-truffle transition-all duration-200 ease-out hover:border-gold hover:bg-white hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40 focus-visible:ring-offset-2;
   }
 
   .section-kicker {
-    @apply mb-4 inline-block rounded-full border border-gold/20 bg-white/60 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-gold;
+    @apply mb-4 inline-flex items-center gap-3 rounded-full border border-gold/20 bg-white/70 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.38em] text-gold;
   }
 
   .section-title {
-    @apply text-4xl leading-tight text-truffle sm:text-5xl;
+    @apply text-4xl leading-[0.96] text-truffle sm:text-5xl lg:text-6xl;
   }
 
   .section-copy {
-    @apply mt-4 max-w-2xl text-base leading-8 text-[#756660] sm:text-lg;
+    @apply mt-4 max-w-2xl text-base leading-8 text-truffle-soft sm:text-lg;
   }
 
-  .petal-outline {
-    border-image: linear-gradient(135deg, rgba(212, 140, 154, 0.28), rgba(180, 138, 79, 0.36)) 1;
+  .editorial-shell {
+    @apply relative overflow-hidden rounded-[2.25rem] border border-white/80 bg-white/70 shadow-soft backdrop-blur-xl;
+  }
+
+  .photo-frame {
+    @apply relative overflow-hidden rounded-[2.2rem] border border-white/80 bg-sand shadow-card;
+  }
+
+  .photo-tint {
+    background:
+      linear-gradient(180deg, rgba(39, 25, 22, 0.06) 0%, rgba(39, 25, 22, 0.42) 100%),
+      linear-gradient(180deg, rgba(255, 250, 245, 0) 40%, rgba(255, 250, 245, 0.08) 100%);
+  }
+
+  .editorial-divider {
+    @apply h-px w-20 bg-gradient-to-r from-gold/10 via-gold/50 to-gold/10;
+  }
+
+  .eyebrow-note {
+    @apply text-[0.72rem] uppercase tracking-[0.34em] text-mink-soft;
+  }
+
+  .art-directed-image {
+    object-position: var(--image-position-mobile, center);
+  }
+
+  .script-accent {
+    @apply font-accent text-[2rem] leading-none text-script sm:text-[2.6rem];
   }
 
   .reveal-section {
@@ -116,6 +154,12 @@ textarea {
   .reveal-section.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .art-directed-image {
+    object-position: var(--image-position-desktop, var(--image-position-mobile, center));
   }
 }
 

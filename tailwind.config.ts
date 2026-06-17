@@ -11,11 +11,17 @@ const config: Config = {
         ivory: "#fffaf5",
         truffle: "#4e403d",
         gold: "#b48a4f",
-        olive: "#87806a"
+        "gold-deep": "#9f7740",
+        olive: "#87806a",
+        sand: "#f1e5da",
+        "mink-soft": "#8b756d",
+        "truffle-soft": "#71615b",
+        script: "#9f7b67"
       },
       fontFamily: {
         display: ["var(--font-display)"],
-        sans: ["var(--font-body)"]
+        sans: ["var(--font-body)"],
+        accent: ["var(--font-accent)"]
       },
       boxShadow: {
         soft: "0 24px 80px rgba(103, 77, 66, 0.12)",

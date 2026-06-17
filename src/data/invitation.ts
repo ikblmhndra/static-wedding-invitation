@@ -1,9 +1,19 @@
+export type ArtDirectedImageAsset = {
+  src: string;
+  alt: string;
+  focus?: {
+    mobile?: string;
+    desktop?: string;
+  };
+};
+
 export type PersonProfile = {
   fullName: string;
   shortName: string;
   parents: string;
   description: string;
-  photo: string;
+  roleNote: string;
+  portrait: ArtDirectedImageAsset;
 };
 
 export type StoryBeat = {
@@ -21,11 +31,11 @@ export type EventDetail = {
 };
 
 export type GalleryItem = {
-  src: string;
-  alt: string;
+  image: ArtDirectedImageAsset;
   width: number;
   height: number;
   caption: string;
+  description: string;
   span: "portrait" | "landscape" | "square";
 };
 
@@ -33,25 +43,60 @@ export const invitationData = {
   coupleLabel: "The Wedding of",
   bride: {
     shortName: "Kiara",
-    fullName: "Kiara Maharani",
+    fullName: "Kiara Lubis",
     parents: "Beloved daughter of Mr. Surya Mahendra & Mrs. Lestari Puspita",
     description:
-      "Gentle in spirit and graceful in heart, Kiara brings warmth wherever she goes. She loves handwritten notes, soft sunlight, and the beauty of thoughtful details.",
-    photo: "/couple/bride-portrait.svg"
+      "Graceful, warm, and endlessly thoughtful, Kiara carries beauty in the smallest details and brings a sense of calm to every room she enters.",
+    roleNote: "A heart for beauty, tenderness, and quiet joy.",
+    portrait: {
+      src: "/couple/bride-portrait.svg",
+      alt: "Portrait of Kiara Lubis",
+      focus: {
+        mobile: "center 28%",
+        desktop: "center 24%"
+      }
+    }
   } satisfies PersonProfile,
   groom: {
     shortName: "Dimas",
-    fullName: "Dimas Pratama",
+    fullName: "Dimas Tri Saptaji",
     parents: "Beloved son of Mr. Aditya Pranowo & Mrs. Ratih Kusumaningrum",
     description:
-      "Calm, sincere, and endlessly dependable, Dimas finds joy in meaningful conversations, quiet mornings, and building a life rooted in love and faith.",
-    photo: "/couple/groom-portrait.svg"
+      "Steady, sincere, and deeply dependable, Dimas leads with quiet confidence and finds meaning in sincerity, faith, and thoughtful devotion.",
+    roleNote: "Rooted in calm, faith, and enduring affection.",
+    portrait: {
+      src: "/couple/groom-portrait.svg",
+      alt: "Portrait of Dimas Tri Saptaji",
+      focus: {
+        mobile: "center 28%",
+        desktop: "center 24%"
+      }
+    }
   } satisfies PersonProfile,
   hero: {
     dateTime: "2026-11-21T09:00:00+07:00",
     venue: "The Manor Andara, Jakarta",
+    eyebrow: "A New Chapter Begins",
     quote:
-      "With grateful hearts and joyful anticipation, we invite you to witness the beginning of our forever."
+      "With grateful hearts and joyful anticipation, we invite you to witness the beginning of our forever.",
+    intro:
+      "An intimate gathering shaped by love, family, and the quiet beauty of a promise made for life.",
+    image: {
+      src: "/gallery/gallery-4.svg",
+      alt: "Editorial couple portrait at golden hour",
+      focus: {
+        mobile: "center 32%",
+        desktop: "center 36%"
+      }
+    },
+    detailImage: {
+      src: "/gallery/gallery-2.svg",
+      alt: "Soft romantic detail photograph",
+      focus: {
+        mobile: "center 36%",
+        desktop: "center 34%"
+      }
+    }
   },
   story: [
     {
@@ -101,51 +146,93 @@ export const invitationData = {
   ] satisfies EventDetail[],
   gallery: [
     {
-      src: "/gallery/gallery-1.svg",
-      alt: "Romantic portrait illustration in soft champagne tones",
+      image: {
+        src: "/gallery/gallery-1.svg",
+        alt: "Romantic portrait in soft champagne tones",
+        focus: {
+          mobile: "center 34%",
+          desktop: "center 30%"
+        }
+      },
       width: 960,
       height: 1200,
-      caption: "A quiet beginning",
+      caption: "A Quiet Beginning",
+      description: "The kind of stillness where affection first learns its own name.",
       span: "portrait"
     },
     {
-      src: "/gallery/gallery-2.svg",
-      alt: "Warm landscape illustration with floral details",
+      image: {
+        src: "/gallery/gallery-2.svg",
+        alt: "Warm landscape portrait with floral details",
+        focus: {
+          mobile: "center 34%",
+          desktop: "center 36%"
+        }
+      },
       width: 1200,
       height: 900,
-      caption: "Golden hour promises",
+      caption: "Golden Hour Promises",
+      description: "A memory wrapped in warm light and quiet anticipation.",
       span: "landscape"
     },
     {
-      src: "/gallery/gallery-3.svg",
-      alt: "Elegant celebration artwork with petals",
+      image: {
+        src: "/gallery/gallery-3.svg",
+        alt: "Elegant celebration portrait with petals",
+        focus: {
+          mobile: "center 40%",
+          desktop: "center 38%"
+        }
+      },
       width: 960,
       height: 1200,
-      caption: "Blooming with joy",
+      caption: "Blooming With Joy",
+      description: "Every detail unfolding with tenderness and delight.",
       span: "portrait"
     },
     {
-      src: "/gallery/gallery-4.svg",
-      alt: "Soft evening illustration with dance silhouettes",
+      image: {
+        src: "/gallery/gallery-4.svg",
+        alt: "Soft evening portrait with dance silhouettes",
+        focus: {
+          mobile: "center 30%",
+          desktop: "center 34%"
+        }
+      },
       width: 1200,
       height: 900,
-      caption: "Dancing into forever",
+      caption: "Dancing Into Forever",
+      description: "A moment held between elegance, music, and promise.",
       span: "landscape"
     },
     {
-      src: "/gallery/gallery-5.svg",
-      alt: "Decorative wedding detail artwork",
+      image: {
+        src: "/gallery/gallery-5.svg",
+        alt: "Decorative wedding detail portrait",
+        focus: {
+          mobile: "center",
+          desktop: "center"
+        }
+      },
       width: 960,
       height: 960,
-      caption: "Letters, flowers, and light",
+      caption: "Letters, Flowers, and Light",
+      description: "Textures and traces of a day composed with intention.",
       span: "square"
     },
     {
-      src: "/gallery/gallery-6.svg",
-      alt: "Elegant floral illustration with wedding arch",
+      image: {
+        src: "/gallery/gallery-6.svg",
+        alt: "Elegant floral portrait with wedding arch",
+        focus: {
+          mobile: "center 34%",
+          desktop: "center 30%"
+        }
+      },
       width: 960,
       height: 1200,
-      caption: "Our day in full bloom",
+      caption: "Our Day in Full Bloom",
+      description: "The setting for vows, celebration, and a life beginning anew.",
       span: "portrait"
     }
   ] satisfies GalleryItem[],
@@ -154,12 +241,12 @@ export const invitationData = {
     accounts: [
       {
         bank: "BCA",
-        name: "Kiara Maharani",
+        name: "Kiara Lubis",
         number: "1234567890"
       },
       {
         bank: "Mandiri",
-        name: "Dimas Pratama",
+        name: "Dimas Tri Saptaji",
         number: "9876543210"
       }
     ],

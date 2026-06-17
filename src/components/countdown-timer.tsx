@@ -11,7 +11,24 @@ type CountdownPart = {
   value: string;
 };
 
-function getRemaining(targetDate: string) {
+type RemainingState = {
+  expired: boolean;
+  parts: CountdownPart[];
+};
+
+function createPlaceholderRemaining(): RemainingState {
+  return {
+    expired: false,
+    parts: [
+      { label: "Days", value: "00" },
+      { label: "Hours", value: "00" },
+      { label: "Minutes", value: "00" },
+      { label: "Seconds", value: "00" }
+    ]
+  };
+}
+
+function getRemaining(targetDate: string): RemainingState {
   const distance = new Date(targetDate).getTime() - Date.now();
 
   if (distance <= 0) {
@@ -44,9 +61,11 @@ function getRemaining(targetDate: string) {
 }
 
 export function CountdownTimer({ targetDate }: CountdownTimerProps) {
-  const [remaining, setRemaining] = useState(() => getRemaining(targetDate));
+  const [remaining, setRemaining] = useState<RemainingState>(() => createPlaceholderRemaining());
 
   useEffect(() => {
+    setRemaining(getRemaining(targetDate));
+
     const interval = window.setInterval(() => {
       setRemaining(getRemaining(targetDate));
     }, 1000);
@@ -65,14 +84,16 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
         {remaining.parts.map((part) => (
           <div
             key={part.label}
-            className="secondary-card rounded-[1.5rem] bg-white/85 px-5 py-6 text-center"
+            className="secondary-card rounded-[1.5rem] bg-white/90 px-5 py-7 text-center"
           >
             <div className="text-4xl font-display text-truffle sm:text-5xl">{part.value}</div>
-            <div className="mt-2 text-xs uppercase tracking-[0.32em] text-gold">{part.label}</div>
+            <div className="mt-3 text-[0.68rem] uppercase tracking-[0.32em] text-gold">
+              {part.label}
+            </div>
           </div>
         ))}
       </div>
-      <p className="mt-6 text-center text-sm uppercase tracking-[0.28em] text-[#7b6d66]">{status}</p>
+      <p className="mt-6 text-center text-xs uppercase tracking-[0.32em] text-[#7b6d66]">{status}</p>
     </div>
   );
 }

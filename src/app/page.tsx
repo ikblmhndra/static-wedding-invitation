@@ -14,24 +14,29 @@ import { StorySection } from "@/sections/story-section";
 
 export default function HomePage() {
   const names = `${invitationData.bride.shortName} & ${invitationData.groom.shortName}`;
+  const monogram = `${invitationData.bride.shortName.charAt(0)}${invitationData.groom.shortName.charAt(0)}`;
   const dateLabel = formatLongDate(invitationData.hero.dateTime);
 
   return (
     <>
       <OpeningScreen
+        label={invitationData.coupleLabel}
         names={names}
         dateLabel={dateLabel}
         venue={invitationData.hero.venue}
         quote={invitationData.hero.quote}
+        image={invitationData.hero.image}
+        detailImage={invitationData.hero.detailImage}
         music={invitationData.music}
       />
-      <Navigation />
+      <Navigation names={names} monogram={monogram} />
       <main>
         <HeroSection
+          label={invitationData.coupleLabel}
           names={names}
-          dateLabel={dateLabel}
-          venue={invitationData.hero.venue}
-          quote={invitationData.hero.quote}
+          hero={invitationData.hero}
+          bride={invitationData.bride}
+          groom={invitationData.groom}
         />
         <CoupleSection bride={invitationData.bride} groom={invitationData.groom} />
         <StorySection items={invitationData.story} />

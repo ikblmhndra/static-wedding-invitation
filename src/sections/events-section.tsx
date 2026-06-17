@@ -12,38 +12,38 @@ type EventsSectionProps = {
 
 function EventCard({ event }: { event: EventDetail }) {
   return (
-    <div className="surface-card h-full px-7 py-8 sm:px-8">
-      <p className="text-xs uppercase tracking-[0.32em] text-gold">{event.title}</p>
+    <div className="editorial-shell h-full px-7 py-8 sm:px-8">
+      <p className="eyebrow-note">{event.title}</p>
       <h3 className="mt-3 text-3xl text-truffle">{event.location}</h3>
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-7 space-y-4">
         <div className="flex items-start gap-4">
-          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full bg-gold/10 text-gold">
+          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-gold/15 bg-gold/8 text-gold">
             <CalendarDays className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#786862]">Date</p>
-            <p className="mt-1 text-base text-truffle">{formatLongDate(event.dateTime)}</p>
+            <p className="eyebrow-note">Date</p>
+            <p className="mt-2 text-base text-truffle">{formatLongDate(event.dateTime)}</p>
           </div>
         </div>
 
         <div className="flex items-start gap-4">
-          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full bg-gold/10 text-gold">
+          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-gold/15 bg-gold/8 text-gold">
             <Clock3 className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#786862]">Time</p>
-            <p className="mt-1 text-base text-truffle">{formatTime(event.dateTime)} WIB</p>
+            <p className="eyebrow-note">Time</p>
+            <p className="mt-2 text-base text-truffle">{formatTime(event.dateTime)} WIB</p>
           </div>
         </div>
 
         <div className="flex items-start gap-4">
-          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full bg-gold/10 text-gold">
+          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-gold/15 bg-gold/8 text-gold">
             <MapPin className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#786862]">Address</p>
-            <p className="mt-1 text-base leading-7 text-truffle">{event.address}</p>
+            <p className="eyebrow-note">Address</p>
+            <p className="mt-2 text-base leading-7 text-truffle">{event.address}</p>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@ export function EventsSection({ events }: EventsSectionProps) {
           <SectionHeading
             kicker="Wedding Event"
             title="Join us for the sacred vows and joyful celebration."
-            description="We would be honored by your presence as we gather for both the solemn ceremony and the evening reception."
+            description="We would be honored by your presence as we gather for a solemn ceremony and an evening reception shaped by warmth and joy."
           />
         </Reveal>
 

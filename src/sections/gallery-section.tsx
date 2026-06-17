@@ -16,7 +16,7 @@ export function GallerySection({ items }: GallerySectionProps) {
           <SectionHeading
             kicker="Photo Gallery"
             title="Moments held in soft light."
-            description="A romantic collection of scenes stored locally in the project for fast loading, easy replacement, and graceful presentation on every device."
+            description="A curated sequence of portraits and details, arranged like pages from an editorial keepsake."
           />
         </Reveal>
 
