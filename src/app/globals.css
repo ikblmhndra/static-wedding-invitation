@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ivory: #fffaf5;
+  --color-cream: #f8f1e8;
+  --color-champagne: #f2e6da;
+  --color-petal: #efd7dc;
+  --color-gold: #b48a4f;
+  --color-ink: #473733;
+  --color-muted: #7b6a64;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", "Book Antiqua",
+    Georgia, serif;
+  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(241, 219, 223, 0.92), transparent 34%),
+    radial-gradient(circle at top right, rgba(248, 236, 223, 0.95), transparent 36%),
+    linear-gradient(180deg, rgba(255, 250, 245, 1) 0%, rgba(249, 243, 236, 1) 100%);
+  color: var(--color-ink);
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(transparent 96%, rgba(180, 138, 79, 0.07) 100%),
+    linear-gradient(90deg, transparent 96%, rgba(180, 138, 79, 0.07) 100%);
+  background-size: 48px 48px;
+  content: "";
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+
+::selection {
+  background: rgba(212, 140, 154, 0.26);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply scroll-mt-28 py-20 sm:py-24;
+  }
+
+  .section-inner {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  }
+
+  .surface-card {
+    @apply rounded-[2rem] border border-white/70 bg-white/75 shadow-soft backdrop-blur-md;
+  }
+
+  .secondary-card {
+    @apply rounded-[1.75rem] border border-[#e9dbcb] bg-[#fffdf9]/95 shadow-card;
+  }
+
+  .button-primary {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold tracking-[0.18em] text-white shadow-card transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#9f7740] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2;
+  }
+
+  .button-secondary {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-gold/35 bg-white/75 px-6 py-3 text-sm font-semibold tracking-[0.14em] text-truffle transition-colors duration-200 ease-out hover:border-gold hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40 focus-visible:ring-offset-2;
+  }
+
+  .section-kicker {
+    @apply mb-4 inline-block rounded-full border border-gold/20 bg-white/60 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-gold;
+  }
+
+  .section-title {
+    @apply text-4xl leading-tight text-truffle sm:text-5xl;
+  }
+
+  .section-copy {
+    @apply mt-4 max-w-2xl text-base leading-8 text-[#756660] sm:text-lg;
+  }
+
+  .petal-outline {
+    border-image: linear-gradient(135deg, rgba(212, 140, 154, 0.28), rgba(180, 138, 79, 0.36)) 1;
+  }
+
+  .reveal-section {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 600ms ease-out,
+      transform 600ms ease-out;
+  }
+
+  .reveal-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+  }
+}
