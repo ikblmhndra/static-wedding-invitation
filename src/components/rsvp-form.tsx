@@ -1,9 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+import { useGuestName } from "@/components/guest-name-card";
 
 export function RsvpForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const guestName = useGuestName();
+  const guestNameInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (!guestNameInputRef.current || !guestName || guestNameInputRef.current.value.trim()) {
+      return;
+    }
+
+    guestNameInputRef.current.value = guestName;
+  }, [guestName]);
 
   return (
     <form
@@ -34,11 +46,19 @@ export function RsvpForm() {
         </label>
       </p>
 
+      {guestName ? (
+        <div className="rounded-[1.5rem] border border-gold/15 bg-gold/8 px-4 py-4">
+          <p className="eyebrow-note">Invitation addressed to</p>
+          <p className="mt-2 font-display text-2xl text-truffle">{guestName}</p>
+        </div>
+      ) : null}
+
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-medium text-truffle">
           Guest name
           <input
             required
+            ref={guestNameInputRef}
             id="guest-name"
             name="guestName"
             autoComplete="name"

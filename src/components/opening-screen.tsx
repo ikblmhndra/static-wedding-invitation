@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { ArtDirectedImageAsset } from "@/data/invitation";
 
 import { ArtDirectedImage } from "@/components/art-directed-image";
+import { GuestNameCard } from "@/components/guest-name-card";
 
 type OpeningScreenProps = {
   label: string;
@@ -110,6 +111,12 @@ export function OpeningScreen({
               <p className="script-accent text-white/[0.86]">For the love we have found</p>
               <div className="editorial-shell mt-5 border-white/20 bg-white/10 px-8 py-10 text-white backdrop-blur-2xl sm:px-10 sm:py-12">
                 <div className="eyebrow-note text-white/[0.65]">{label}</div>
+                <GuestNameCard
+                  label="Dear"
+                  className="mt-5 inline-flex max-w-full flex-col rounded-[1.5rem] border border-white/15 bg-black/10 px-5 py-4 backdrop-blur-sm"
+                  labelClassName="eyebrow-note text-white/[0.62]"
+                  nameClassName="mt-2 font-display text-2xl leading-tight text-white sm:text-3xl"
+                />
                 <h1 className="mt-5 text-5xl leading-[0.92] sm:text-7xl">{names}</h1>
                 <div className="editorial-divider mt-6 bg-gradient-to-r from-white/10 via-white/[0.65] to-white/10" />
                 <p className="mt-6 max-w-xl text-base leading-8 text-white/[0.78] sm:text-lg">{quote}</p>

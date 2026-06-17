@@ -4,6 +4,7 @@ import type { PersonProfile } from "@/data/invitation";
 import { formatLongDate } from "@/lib/format";
 
 import { ArtDirectedImage } from "@/components/art-directed-image";
+import { GuestNameCard } from "@/components/guest-name-card";
 
 type HeroSectionProps = {
   label: string;
@@ -43,6 +44,12 @@ export function HeroSection({ label, names, hero, bride, groom }: HeroSectionPro
             <p className="mt-5 max-w-2xl text-base leading-8 text-[#7b6a63] sm:text-lg">
               {hero.intro}
             </p>
+            <GuestNameCard
+              label="Reserved with love for"
+              className="mt-8 inline-flex max-w-full flex-col rounded-[1.6rem] border border-white/75 bg-white/72 px-5 py-4 shadow-card backdrop-blur-md"
+              labelClassName="eyebrow-note"
+              nameClassName="mt-2 font-display text-3xl leading-tight text-truffle sm:text-4xl"
+            />
 
             <div className="mt-8 flex items-center gap-4">
               <div className="editorial-divider" />
