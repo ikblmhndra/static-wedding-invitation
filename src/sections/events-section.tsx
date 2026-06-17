@@ -11,14 +11,23 @@ type EventsSectionProps = {
 };
 
 function EventCard({ event }: { event: EventDetail }) {
+  const badgeLabel = event.title === "Akad Nikah" ? "Sacred Vows" : "Reception";
+
   return (
     <div className="editorial-shell h-full px-7 py-8 sm:px-8">
-      <p className="eyebrow-note">{event.title}</p>
-      <h3 className="mt-3 text-3xl text-truffle">{event.location}</h3>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="eyebrow-note">{event.title}</p>
+          <h3 className="mt-3 text-3xl text-truffle">{event.location}</h3>
+        </div>
+        <div className="hidden rounded-full border border-gold/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(246,233,220,0.82))] px-4 py-2 text-[0.62rem] uppercase tracking-[0.28em] text-gold sm:inline-flex">
+          {badgeLabel}
+        </div>
+      </div>
 
       <div className="mt-7 space-y-4">
         <div className="flex items-start gap-4">
-          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-gold/15 bg-gold/8 text-gold">
+          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-gold/15 bg-[linear-gradient(180deg,rgba(221,186,124,0.16),rgba(221,186,124,0.04))] text-gold">
             <CalendarDays className="h-5 w-5" />
           </div>
           <div>
@@ -28,7 +37,7 @@ function EventCard({ event }: { event: EventDetail }) {
         </div>
 
         <div className="flex items-start gap-4">
-          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-gold/15 bg-gold/8 text-gold">
+          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-gold/15 bg-[linear-gradient(180deg,rgba(221,186,124,0.16),rgba(221,186,124,0.04))] text-gold">
             <Clock3 className="h-5 w-5" />
           </div>
           <div>
@@ -38,7 +47,7 @@ function EventCard({ event }: { event: EventDetail }) {
         </div>
 
         <div className="flex items-start gap-4">
-          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-gold/15 bg-gold/8 text-gold">
+          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-gold/15 bg-[linear-gradient(180deg,rgba(221,186,124,0.16),rgba(221,186,124,0.04))] text-gold">
             <MapPin className="h-5 w-5" />
           </div>
           <div>
@@ -48,9 +57,14 @@ function EventCard({ event }: { event: EventDetail }) {
         </div>
       </div>
 
-      <a href={event.mapUrl} target="_blank" rel="noreferrer" className="button-primary mt-8">
-        Open Google Maps
-      </a>
+      <div className="mt-8 flex flex-wrap items-center gap-4">
+        <a href={event.mapUrl} target="_blank" rel="noreferrer" className="button-primary">
+          Open Google Maps
+        </a>
+        <p className="max-w-xs text-sm leading-7 text-[#796962]">
+          Kindly arrive a little earlier so every moment can begin in ease and grace.
+        </p>
+      </div>
     </div>
   );
 }

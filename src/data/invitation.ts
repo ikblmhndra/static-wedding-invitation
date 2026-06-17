@@ -82,7 +82,7 @@ export const invitationData = {
     intro:
       "An intimate gathering shaped by love, family, and the quiet beauty of a promise made for life.",
     image: {
-      src: "/hero-bg.svg",
+      src: "/gallery/gallery-4.svg",
       alt: "Editorial couple portrait at golden hour",
       focus: {
         mobile: "center 32%",

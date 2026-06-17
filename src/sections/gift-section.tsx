@@ -29,9 +29,13 @@ export function GiftSection({ accounts, qrisImage }: GiftSectionProps) {
         <div className="mt-14 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal delay={80}>
             <div className="editorial-shell h-full px-6 py-8 sm:px-8">
-              <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full border border-gold/15 bg-gold/8 text-gold">
+              <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full border border-gold/15 bg-[linear-gradient(180deg,rgba(221,186,124,0.16),rgba(221,186,124,0.04))] text-gold">
                 <Gift className="h-6 w-6" />
               </div>
+              <p className="mb-6 max-w-xl text-base leading-8 text-[#70615b]">
+                If you have asked to send a gift from afar, we have prepared a few graceful digital
+                options below.
+              </p>
               <div className="grid gap-5">
                 {accounts.map((account) => (
                   <div key={account.number} className="secondary-card px-5 py-5">
