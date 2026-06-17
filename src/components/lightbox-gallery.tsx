@@ -2,6 +2,7 @@
 
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 
 import type { GalleryItem } from "@/data/invitation";
 
@@ -19,12 +20,20 @@ const spanClasses: Record<GalleryItem["span"], string> = {
 
 export function LightboxGallery({ items }: LightboxGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
   const activeLabel = String((activeIndex ?? 0) + 1).padStart(2, "0");
 
   const activeItem = useMemo(
     () => (activeIndex === null ? null : items[activeIndex]),
     [activeIndex, items]
   );
+  const activeWidth = activeItem?.lightbox?.width ?? activeItem?.width ?? 1;
+  const activeHeight = activeItem?.lightbox?.height ?? activeItem?.height ?? 1;
+  const activeOrientation = activeHeight > activeWidth ? "portrait" : "landscape";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -96,9 +105,10 @@ export function LightboxGallery({ items }: LightboxGalleryProps) {
         ))}
       </div>
 
-      {activeItem ? (
-        <div className="fixed inset-0 z-50 bg-[#1d1513]/92 p-4 backdrop-blur-md">
-          <div className="mx-auto flex h-full max-w-6xl items-center justify-center gap-3">
+      {activeItem && mounted
+        ? createPortal(
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-[#1d1513]/92 p-4 backdrop-blur-md">
+          <div className="mx-auto flex min-h-full max-w-6xl items-center justify-center gap-3 py-4">
             <button
               type="button"
               onClick={goPrevious}
@@ -108,7 +118,11 @@ export function LightboxGallery({ items }: LightboxGalleryProps) {
               <ChevronLeft className="h-5 w-5" />
             </button>
 
-            <div className="relative w-full max-w-5xl overflow-hidden rounded-[2.2rem] border border-white/20 bg-white/10 shadow-soft">
+            <div
+              className={`relative w-full overflow-hidden rounded-[2.2rem] border border-white/20 bg-white/10 shadow-soft ${
+                activeOrientation === "portrait" ? "max-w-3xl" : "max-w-5xl"
+              }`}
+            >
               <button
                 type="button"
                 onClick={() => setActiveIndex(null)}
@@ -118,13 +132,24 @@ export function LightboxGallery({ items }: LightboxGalleryProps) {
                 <X className="h-5 w-5" />
               </button>
 
-              <div className="relative aspect-[4/5] w-full md:aspect-[16/10]">
-                <ArtDirectedImage image={activeItem.image} sizes="90vw" priority />
-                <div className="photo-tint absolute inset-0 opacity-55" />
+              <div
+                className={`relative w-full bg-[#120d0c]/45 ${
+                  activeOrientation === "portrait"
+                    ? "h-[min(72vh,820px)] min-h-[420px]"
+                    : "h-[min(64vh,720px)] min-h-[300px]"
+                }`}
+              >
+                <ArtDirectedImage
+                  image={activeItem.image}
+                  sizes={activeOrientation === "portrait" ? "(max-width: 768px) 92vw, 42rem" : "90vw"}
+                  priority
+                  objectFit="contain"
+                  objectPosition="center center"
+                />
               </div>
 
-              <div className="flex items-center justify-between gap-4 px-6 py-6 text-white">
-                <div>
+              <div className="flex flex-col gap-5 px-6 py-6 text-white sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
                   <p className="eyebrow-note text-white/[0.65]">
                     {activeLabel} / {String(items.length).padStart(2, "0")}
                   </p>
@@ -133,7 +158,7 @@ export function LightboxGallery({ items }: LightboxGalleryProps) {
                     {activeItem.description}
                   </p>
                 </div>
-                <div className="flex gap-2 md:hidden">
+                <div className="flex shrink-0 gap-2 md:hidden">
                   <button
                     type="button"
                     onClick={goPrevious}
@@ -164,7 +189,10 @@ export function LightboxGallery({ items }: LightboxGalleryProps) {
             </button>
           </div>
         </div>
-      ) : null}
+          ,
+          document.body
+        )
+        : null}
     </>
   );
 }

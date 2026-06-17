@@ -34,6 +34,10 @@ export type GalleryItem = {
   image: ArtDirectedImageAsset;
   width: number;
   height: number;
+  lightbox?: {
+    width: number;
+    height: number;
+  };
   caption: string;
   description: string;
   span: "portrait" | "landscape" | "square";
@@ -156,6 +160,10 @@ export const invitationData = {
       },
       width: 960,
       height: 1200,
+      lightbox: {
+        width: 1200,
+        height: 1798
+      },
       caption: "A Quiet Beginning",
       description: "The kind of stillness where affection first learns its own name.",
       span: "portrait"
@@ -171,6 +179,10 @@ export const invitationData = {
       },
       width: 1200,
       height: 900,
+      lightbox: {
+        width: 1200,
+        height: 801
+      },
       caption: "Golden Hour Promises",
       description: "A memory wrapped in warm light and quiet anticipation.",
       span: "landscape"
@@ -186,6 +198,10 @@ export const invitationData = {
       },
       width: 960,
       height: 1200,
+      lightbox: {
+        width: 1200,
+        height: 801
+      },
       caption: "Blooming With Joy",
       description: "Every detail unfolding with tenderness and delight.",
       span: "portrait"
@@ -201,6 +217,10 @@ export const invitationData = {
       },
       width: 1200,
       height: 900,
+      lightbox: {
+        width: 1200,
+        height: 1798
+      },
       caption: "Dancing Into Forever",
       description: "A moment held between elegance, music, and promise.",
       span: "landscape"
@@ -216,6 +236,10 @@ export const invitationData = {
       },
       width: 960,
       height: 960,
+      lightbox: {
+        width: 1200,
+        height: 801
+      },
       caption: "Letters, Flowers, and Light",
       description: "Textures and traces of a day composed with intention.",
       span: "square"
@@ -231,6 +255,10 @@ export const invitationData = {
       },
       width: 960,
       height: 1200,
+      lightbox: {
+        width: 1200,
+        height: 1798
+      },
       caption: "Our Day in Full Bloom",
       description: "The setting for vows, celebration, and a life beginning anew.",
       span: "portrait"
