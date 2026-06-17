@@ -10,7 +10,6 @@ type OpeningScreenProps = {
   venue: string;
   quote: string;
   music: {
-    enabled: boolean;
     src: string;
     autoplayOnOpen: boolean;
   };
@@ -26,9 +25,10 @@ export function OpeningScreen({
   const [opened, setOpened] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [audioAvailable, setAudioAvailable] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const canShowMusic = useMemo(() => music.enabled && Boolean(music.src), [music]);
+  const canShowMusic = useMemo(() => Boolean(music.src?.trim()), [music.src]);
 
   useEffect(() => {
     setMounted(true);
@@ -46,14 +46,18 @@ export function OpeningScreen({
     const audio = audioRef.current;
     if (!audio) return;
 
-    if (audio.paused) {
-      await audio.play();
-      setPlaying(true);
-      return;
-    }
+    try {
+      if (audio.paused) {
+        await audio.play();
+        setPlaying(true);
+        return;
+      }
 
-    audio.pause();
-    setPlaying(false);
+      audio.pause();
+      setPlaying(false);
+    } catch {
+      setPlaying(false);
+    }
   };
 
   const openInvitation = async () => {
@@ -71,7 +75,13 @@ export function OpeningScreen({
   return (
     <>
       {canShowMusic ? (
-        <audio ref={audioRef} loop preload="none">
+        <audio
+          ref={audioRef}
+          loop
+          preload="metadata"
+          onCanPlay={() => setAudioAvailable(true)}
+          onError={() => setAudioAvailable(false)}
+        >
           <source src={music.src} />
         </audio>
       ) : null}
@@ -111,18 +121,25 @@ export function OpeningScreen({
       </div>
 
       {opened && canShowMusic ? (
-        <button
-          type="button"
-          onClick={toggleAudio}
-          className="fixed bottom-5 right-5 z-40 inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/80 bg-white/80 px-4 py-3 text-sm font-semibold text-truffle shadow-card backdrop-blur-md transition-colors duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
-        >
-          {playing ? <Pause className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-          {playing ? "Pause Music" : "Play Music"}
-        </button>
+        <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">
+          {!audioAvailable ? (
+            <div className="hidden rounded-full border border-white/80 bg-white/75 px-4 py-3 text-sm text-[#6f615b] shadow-card backdrop-blur-md md:inline-flex">
+              Music file could not be loaded from `{music.src}`
+            </div>
+          ) : null}
+          <button
+            type="button"
+            onClick={toggleAudio}
+            className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/80 bg-white/80 px-4 py-3 text-sm font-semibold text-truffle shadow-card backdrop-blur-md transition-colors duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
+          >
+            {playing ? <Pause className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+            {playing ? "Pause Music" : "Play Music"}
+          </button>
+        </div>
       ) : opened ? (
         <div className="fixed bottom-5 right-5 z-40 hidden rounded-full border border-white/80 bg-white/75 px-4 py-3 text-sm text-[#6f615b] shadow-card backdrop-blur-md md:inline-flex">
           <Music2 className="mr-2 h-4 w-4" />
-          Add `/public/music/instrumental.mp3` to enable music
+          Set `music.src` in invitation data to enable music
         </div>
       ) : null}
     </>

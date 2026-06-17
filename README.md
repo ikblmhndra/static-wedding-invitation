@@ -170,5 +170,5 @@ The site ships with romantic illustration-style placeholders so it runs immediat
 If you want music to start after clicking `Open Invitation`:
 
 1. Add a file such as `public/music/instrumental.mp3`
-2. Set `music.enabled` to `true` in [`src/data/invitation.ts`](/Users/IK1622/Documents/code-project/dimas-web/src/data/invitation.ts)
+2. Set `music.src` to your file path in [`src/data/invitation.ts`](/Users/IK1622/Documents/code-project/dimas-web/src/data/invitation.ts)
 3. Keep the file small for performance

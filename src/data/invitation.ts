@@ -166,7 +166,6 @@ export const invitationData = {
     qrisImage: "/gift/qris-placeholder.svg"
   },
   music: {
-    enabled: false,
     src: "/music/instrumental.mp3",
     autoplayOnOpen: true
   },

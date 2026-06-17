@@ -2,3 +2,4 @@
 /.eslintrc.json
 /.next
 /node_modules
+/out
