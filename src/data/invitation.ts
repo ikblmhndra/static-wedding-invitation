@@ -49,7 +49,7 @@ export const invitationData = {
       "Graceful, warm, and endlessly thoughtful, Kiara carries beauty in the smallest details and brings a sense of calm to every room she enters.",
     roleNote: "A heart for beauty, tenderness, and quiet joy.",
     portrait: {
-      src: "/couple/bride-portrait.svg",
+      src: "/couple/bride-portrait.jpg",
       alt: "Portrait of Kiara Lubis",
       focus: {
         mobile: "center 28%",
@@ -65,7 +65,7 @@ export const invitationData = {
       "Steady, sincere, and deeply dependable, Dimas leads with quiet confidence and finds meaning in sincerity, faith, and thoughtful devotion.",
     roleNote: "Rooted in calm, faith, and enduring affection.",
     portrait: {
-      src: "/couple/groom-portrait.svg",
+      src: "/couple/groom-portrait.jpg",
       alt: "Portrait of Dimas Tri Saptaji",
       focus: {
         mobile: "center 28%",
@@ -82,7 +82,7 @@ export const invitationData = {
     intro:
       "An intimate gathering shaped by love, family, and the quiet beauty of a promise made for life.",
     image: {
-      src: "/gallery/gallery-4.svg",
+      src: "/gallery/gallery-4.jpg",
       alt: "Editorial couple portrait at golden hour",
       focus: {
         mobile: "center 32%",
@@ -90,7 +90,7 @@ export const invitationData = {
       }
     },
     detailImage: {
-      src: "/gallery/gallery-2.svg",
+      src: "/gallery/gallery-2.jpg",
       alt: "Soft romantic detail photograph",
       focus: {
         mobile: "center 36%",
@@ -147,7 +147,7 @@ export const invitationData = {
   gallery: [
     {
       image: {
-        src: "/gallery/gallery-1.svg",
+        src: "/gallery/gallery-1.jpg",
         alt: "Romantic portrait in soft champagne tones",
         focus: {
           mobile: "center 34%",
@@ -162,7 +162,7 @@ export const invitationData = {
     },
     {
       image: {
-        src: "/gallery/gallery-2.svg",
+        src: "/gallery/gallery-2.jpg",
         alt: "Warm landscape portrait with floral details",
         focus: {
           mobile: "center 34%",
@@ -177,7 +177,7 @@ export const invitationData = {
     },
     {
       image: {
-        src: "/gallery/gallery-3.svg",
+        src: "/gallery/gallery-3.jpg",
         alt: "Elegant celebration portrait with petals",
         focus: {
           mobile: "center 40%",
@@ -192,7 +192,7 @@ export const invitationData = {
     },
     {
       image: {
-        src: "/gallery/gallery-4.svg",
+        src: "/gallery/gallery-4.jpg",
         alt: "Soft evening portrait with dance silhouettes",
         focus: {
           mobile: "center 30%",
@@ -207,7 +207,7 @@ export const invitationData = {
     },
     {
       image: {
-        src: "/gallery/gallery-5.svg",
+        src: "/gallery/gallery-5.jpg",
         alt: "Decorative wedding detail portrait",
         focus: {
           mobile: "center",
@@ -222,7 +222,7 @@ export const invitationData = {
     },
     {
       image: {
-        src: "/gallery/gallery-6.svg",
+        src: "/gallery/gallery-6.jpg",
         alt: "Elegant floral portrait with wedding arch",
         focus: {
           mobile: "center 34%",
