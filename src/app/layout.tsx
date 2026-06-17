@@ -9,7 +9,8 @@ const names = `${invitationData.bride.shortName} & ${invitationData.groom.shortN
 export const metadata: Metadata = {
   title: `${names} | Wedding Invitation`,
   description:
-    "A romantic and elegant wedding invitation website built for a timeless celebration.",
+    // "A romantic and elegant wedding invitation website built for a timeless celebration.",
+    `A wedding of ${names} celebrating love, joy, and togetherness. Join us for a memorable day filled with cherished moments and heartfelt celebrations. `,
   applicationName: "Wedding Invitation",
   keywords: ["wedding invitation", "next.js", "tailwind css", "static site"],
   authors: [{ name: "Codex" }]
