@@ -98,14 +98,14 @@ export function OpeningScreen({
 
       <div
         aria-hidden={opened}
-        className={`fixed inset-0 z-50 overflow-hidden bg-[#221816] text-white transition-all duration-700 ${
+        className={`fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-[#221816] text-white transition-all duration-700 ${
           opened ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
       >
         <ArtDirectedImage image={image} priority sizes="100vw" className="scale-[1.02]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,16,14,0.22),rgba(24,16,14,0.82))]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,246,239,0.12),transparent_34%),linear-gradient(90deg,rgba(28,18,16,0.52),rgba(28,18,16,0.08),rgba(28,18,16,0.62))]" />
-        <div className="relative flex min-h-screen items-center px-6 py-10 sm:px-10 lg:px-16">
+        <div className="relative flex min-h-[100svh] items-start px-6 py-8 sm:min-h-screen sm:items-center sm:px-10 sm:py-10 lg:px-16">
           <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div className="max-w-2xl">
               <p className="script-accent text-white/[0.86]">For the love we have found</p>

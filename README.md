@@ -1,19 +1,24 @@
 # Romantic Wedding Invitation
 
-Static-first wedding invitation website built with Next.js App Router and Tailwind CSS. The project is designed for easy deployment to Vercel or Netlify without any database.
+Static-first wedding invitation website built with Next.js App Router and Tailwind CSS. This project is designed to deploy cleanly to Vercel or Netlify without a database, while still supporting a premium photo-led design, personalized guest links, optional music, and RSVP collection.
 
 ## Features
 
 - Static Site Generation with `output: "export"`
-- Elegant wedding-focused design system with soft animations
-- Opening cover screen with optional music support after user interaction
-- Bride and groom profile cards
-- Love story timeline
-- Event details with Google Maps links
-- Live countdown timer
-- Local gallery in `public/gallery` with lightbox
+- Elegant editorial-style wedding layout with soft motion
+- Opening cover with optional music after user interaction
+- Personalized guest name via `?to=Guest%20Name`
+- Bride and groom profiles, timeline, event details, countdown, and gallery
+- Local image assets in `public/` with lightbox gallery
 - RSVP form using Netlify Forms by default
-- Optional gift section with copy-to-clipboard buttons
+- Optional gift section with copy-to-clipboard support
+
+## Tech Stack
+
+- Next.js App Router
+- React 19
+- Tailwind CSS
+- Static export compatible with Vercel and Netlify
 
 ## Project Structure
 
@@ -21,154 +26,129 @@ Static-first wedding invitation website built with Next.js App Router and Tailwi
 .
 ├── netlify.toml
 ├── next.config.ts
-├── package.json
-├── postcss.config.mjs
 ├── public
-│   ├── couple
-│   │   ├── bride-portrait.svg
-│   │   └── groom-portrait.svg
-│   ├── gallery
-│   │   ├── gallery-1.svg
-│   │   ├── gallery-2.svg
-│   │   ├── gallery-3.svg
-│   │   ├── gallery-4.svg
-│   │   ├── gallery-5.svg
-│   │   └── gallery-6.svg
-│   ├── gift
-│   │   └── qris-placeholder.svg
-│   └── hero-bg.svg
+│   ├── couple/
+│   ├── gallery/
+│   ├── gift/
+│   └── music/
 ├── src
-│   ├── app
-│   │   ├── globals.css
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   └── thank-you
-│   │       └── page.tsx
-│   ├── components
-│   │   ├── copy-button.tsx
-│   │   ├── countdown-timer.tsx
-│   │   ├── lightbox-gallery.tsx
-│   │   ├── navigation.tsx
-│   │   ├── opening-screen.tsx
-│   │   ├── reveal.tsx
-│   │   ├── rsvp-form.tsx
-│   │   └── section-heading.tsx
-│   ├── data
-│   │   └── invitation.ts
-│   ├── lib
-│   │   └── format.ts
-│   └── sections
-│       ├── closing-section.tsx
-│       ├── countdown-section.tsx
-│       ├── couple-section.tsx
-│       ├── events-section.tsx
-│       ├── gallery-section.tsx
-│       ├── gift-section.tsx
-│       ├── hero-section.tsx
-│       ├── rsvp-section.tsx
-│       └── story-section.tsx
-└── tailwind.config.ts
+│   ├── app/
+│   ├── components/
+│   ├── data/invitation.ts
+│   ├── lib/
+│   └── sections/
+└── README.md
 ```
+
+Key files:
+
+- `src/data/invitation.ts` central content and asset paths
+- `src/components/rsvp-form.tsx` visible RSVP form
+- `src/components/netlify-form-registration.tsx` hidden static form required by Netlify Forms
+- `src/lib/guest-name.ts` guest name parsing for `?to=`
+- `next.config.ts` static export config
 
 ## Run Locally
 
-1. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-2. Start the dev server:
-
-   ```bash
-   npm run dev
-   ```
-
-3. Open `http://localhost:3000`
-
-4. Create a production build:
-
-   ```bash
-   npm run build
-   ```
-
-## Deploy To Vercel
-
-1. Push the project to GitHub, GitLab, or Bitbucket.
-2. Import the repository into Vercel.
-3. Keep the default build command: `npm run build`.
-4. Vercel will detect Next.js automatically and deploy the static export.
-
-CLI option:
-
 ```bash
-npm install -g vercel
-vercel
-vercel --prod
+npm install
+npm run dev
 ```
 
-## Deploy To Netlify
+Open `http://localhost:3000`
 
-1. Push the project to a Git provider.
-2. Create a new site in Netlify and connect the repository.
-3. Netlify will use:
-   - Build command: `npm run build`
-   - Publish directory: `out`
-4. Deploy the site.
+Production checks:
+
+```bash
+npm run lint
+npm run build
+```
+
+The static export is generated into `out/`.
+
+## Customize Content
+
+Edit wedding copy, names, event details, gallery captions, gift info, and music path in `src/data/invitation.ts`.
+
+Replace placeholder assets with your own files in:
+
+- `public/couple`
+- `public/gallery`
+- `public/gift`
+- `public/music`
+
+If you change filenames, update the paths in `src/data/invitation.ts`.
+
+## Personalized Guest Links
+
+This project supports guest personalization using a query parameter:
+
+```text
+https://your-domain.com/?to=Ikbal%20Mahendra
+```
+
+The guest name is shown on the opening screen, the hero section, and prefilled into the RSVP name field when available.
+
+## Music Setup
+
+Music only starts after user interaction to respect browser autoplay rules.
+
+1. Put your audio file in `public/music/`
+2. Set `music.src` in `src/data/invitation.ts`
+3. Example: `"/music/instrumental.mp3"`
 
 ## RSVP Configuration
 
-The default RSVP implementation is Netlify Forms and requires no database.
-
 ### Option A: Netlify Forms (default)
 
-The form in [`src/components/rsvp-form.tsx`](/Users/IK1622/Documents/code-project/dimas-web/src/components/rsvp-form.tsx) already includes:
+The default RSVP flow is database-free and works with Netlify Forms.
 
-- `data-netlify="true"`
-- `name="wedding-rsvp"`
-- hidden `form-name` input
-- honeypot field for spam protection
+Important:
 
-After the first production deployment:
+- Keep `data-netlify="true"` on the RSVP form
+- Keep `name="wedding-rsvp"` and the hidden `form-name` input
+- Do not remove `src/components/netlify-form-registration.tsx`
 
-1. Submit the form once on the live site.
-2. Open the Netlify dashboard.
-3. Go to `Forms` and confirm submissions are captured.
+That hidden static form exists so Netlify can detect the form during build. Without it, submissions may not appear in the Netlify dashboard.
+
+After deploying to Netlify:
+
+1. Open the live site
+2. Submit the RSVP form once
+3. Check `Forms` in the Netlify dashboard
 
 ### Option B: Google Forms
 
-1. Create a Google Form with matching fields.
-2. Open the prefilled form and inspect the generated `entry.<number>` field names.
-3. Replace the form `action` and input `name` attributes in [`src/components/rsvp-form.tsx`](/Users/IK1622/Documents/code-project/dimas-web/src/components/rsvp-form.tsx).
-4. Keep the thank-you redirect or point the form to your own confirmation page.
+Replace the form `action` and field `name` values in `src/components/rsvp-form.tsx` with your Google Form endpoint and `entry.<id>` field names.
 
-### Option C: Email via serverless function
+### Option C: Serverless Email
 
-Use a serverless endpoint such as:
+Replace the form `action` with a serverless endpoint such as:
 
 - `/.netlify/functions/rsvp-email`
 - `/api/rsvp`
 
-Then:
+Then handle the payload with a provider like Resend.
 
-1. Create the function with Resend or another email service.
-2. Add the provider API key as an environment variable in Netlify or Vercel.
-3. Update the form `action` to the serverless endpoint and handle the payload there.
+## Deploy
 
-## Replacing Placeholder Assets
+### Vercel
 
-The site ships with romantic illustration-style placeholders so it runs immediately. To use real wedding media:
+1. Push the repository to GitHub, GitLab, or Bitbucket
+2. Import the project into Vercel
+3. Use build command: `npm run build`
+4. Deploy
 
-1. Replace `public/hero-bg.svg`
-2. Replace `public/couple/bride-portrait.svg`
-3. Replace `public/couple/groom-portrait.svg`
-4. Replace gallery files inside `public/gallery`
-5. Update paths in [`src/data/invitation.ts`](/Users/IK1622/Documents/code-project/dimas-web/src/data/invitation.ts) if filenames change
+### Netlify
 
-## Optional Music
+1. Push the repository to GitHub, GitLab, or Bitbucket
+2. Create a new Netlify site from the repo
+3. Use build command: `npm run build`
+4. Use publish directory: `out`
+5. Deploy and test the RSVP form once
 
-If you want music to start after clicking `Open Invitation`:
+## Notes
 
-1. Add a file such as `public/music/instrumental.mp3`
-2. Set `music.src` to your file path in [`src/data/invitation.ts`](/Users/IK1622/Documents/code-project/dimas-web/src/data/invitation.ts)
-3. Keep the file small for performance
+- This repo is intentionally static-first and database-free by default
+- `next.config.ts` uses `images.unoptimized = true` for static export compatibility
+- Generated folders such as `.next/` and `out/` should not be edited manually
