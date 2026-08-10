@@ -79,7 +79,7 @@ export const invitationData = {
     }
   } satisfies PersonProfile,
   hero: {
-    dateTime: "2026-09-05T09:00:00+07:00",
+    dateTime: "2026-09-05T11:00:00+07:00",
     venue: "Kalibata House 21",
     eyebrow: "A New Chapter Begins",
     quote:
@@ -142,7 +142,7 @@ export const invitationData = {
     {
       title: "Resepsi",
       dateTime: "2026-09-05T11:00:00+07:00",
-      endDateTime: "2026-09-05T13:00:00+07:00",
+      endDateTime: "2026-09-05T14:00:00+07:00",
       location: "Kalibata House 21",
       address:
         "Jl. Kalibata Utara II No.21, RT.1/RW.7, Kalibata, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12740",
