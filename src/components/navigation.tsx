@@ -1,7 +1,7 @@
 const navigationItems = [
   { label: "Home", href: "#hero" },
   { label: "Couple", href: "#couple" },
-  // { label: "Story", href: "#story" },
+  { label: "Story", href: "#story" },
   { label: "Events", href: "#events" },
   { label: "Gallery", href: "#gallery" },
   { label: "RSVP", href: "#rsvp" }

@@ -25,6 +25,7 @@ export type StoryBeat = {
 export type EventDetail = {
   title: string;
   dateTime: string;
+  endDateTime?: string;
   location: string;
   address: string;
   mapUrl: string;
@@ -47,7 +48,7 @@ export const invitationData = {
   coupleLabel: "The Wedding of",
   bride: {
     shortName: "Bidadari",
-    fullName: "Bidadari Kiara Ramadhani Lubis S.T.P",
+    fullName: "Bidadari Kiara Ramadhani Lubis, S.T.P",
     parents: "Beloved daughter of Tigor H. Asnawi Lubis & Almh Mira Ruthie Suryo",
     description:
       "Graceful, warm, and endlessly thoughtful, Kiara carries beauty in the smallest details and brings a sense of calm to every room she enters.",
@@ -63,7 +64,7 @@ export const invitationData = {
   } satisfies PersonProfile,
   groom: {
     shortName: "Dimas",
-    fullName: "Dimas Tri Saptaji S.T",
+    fullName: "Dimas Tri Saptaji, S.T",
     parents: "Beloved son of Zein Djaeni & Wiwin",
     description:
       "Steady, sincere, and deeply dependable, Dimas leads with quiet confidence and finds meaning in sincerity, faith, and thoughtful devotion.",
@@ -104,48 +105,49 @@ export const invitationData = {
   },
   story: [
     {
-      year: "2020",
+      year: "2023",
       title: "First Meeting",
       description:
-        "A quiet introduction turned into an unforgettable conversation, and in that moment the world felt a little softer and brighter."
+        "We met by chance, simply finding ourselves in the same place at the same time. Never knowing that our paths would intertwine. It all began with small talks and jokes, and it led us to the beginning of our forever."
     },
     {
-      year: "2022",
+      year: "2023",
       title: "Growing Together",
       description:
-        "Through shared dreams, long walks, and countless small kindnesses, friendship gently became the deepest kind of love."
+        "With the intention of building something meaningful, we took time to know each other’s dreams, hopes, and to grow together along the way."
     },
     {
-      year: "2025",
+      year: "2026",
       title: "Engagement",
       description:
-        "Surrounded by family blessings, we promised to keep choosing each other with intention, tenderness, and faith."
+        "Somewhere along the way, a simple “yes” became our promise to choose each other forever. Surrounded by family, in a sacred moment filled with love, we found ourselves ready to be each other’s home not just for today, but for all the days that follow."
     },
     {
       year: "2026",
       title: "Wedding Day",
       description:
-        "Now we look forward to celebrating the sacred beginning of marriage, held close by the people we love most."
+        "And now, we begin the forever we once only dreamed of. Hand in hand, heart to heart. To be each other’s panacea, each other’s oxytocin."
     }
   ] satisfies StoryBeat[],
   events: [
     {
       title: "Akad Nikah",
-      dateTime: "2026-11-21T09:00:00+07:00",
-      location: "Glasshouse Chapel, The Manor Andara",
+      dateTime: "2026-09-05T10:00:00+07:00",
+      location: "Kalibata House 21",
       address:
-        "Jl. Raya Andara No. 88, Cinere, Kota Depok, Jawa Barat 16514, Indonesia",
+        "Jl. Kalibata Utara II No.21, RT.1/RW.7, Kalibata, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12740",
       mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=The+Manor+Andara+Depok"
+        "https://maps.app.goo.gl/BbKSVBuZ5Y7aDkQi7"
     },
     {
       title: "Resepsi",
-      dateTime: "2026-11-21T18:30:00+07:00",
-      location: "Garden Ballroom, The Manor Andara",
+      dateTime: "2026-09-05T11:00:00+07:00",
+      endDateTime: "2026-09-05T13:00:00+07:00",
+      location: "Kalibata House 21",
       address:
-        "Jl. Raya Andara No. 88, Cinere, Kota Depok, Jawa Barat 16514, Indonesia",
+        "Jl. Kalibata Utara II No.21, RT.1/RW.7, Kalibata, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12740",
       mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=The+Manor+Andara+Depok"
+        "https://maps.app.goo.gl/BbKSVBuZ5Y7aDkQi7"
     }
   ] satisfies EventDetail[],
   gallery: [
@@ -269,13 +271,13 @@ export const invitationData = {
     accounts: [
       {
         bank: "BCA",
-        name: "Kiara Lubis",
-        number: "1234567890"
+        name: "Bidadari Kiara R Lubis",
+        number: "5855120426"
       },
       {
         bank: "Mandiri",
         name: "Dimas Tri Saptaji",
-        number: "9876543210"
+        number: "0060011325689"
       }
     ],
     qrisImage: "/gift/qris-placeholder.svg"

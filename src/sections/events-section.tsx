@@ -42,7 +42,11 @@ function EventCard({ event }: { event: EventDetail }) {
           </div>
           <div>
             <p className="eyebrow-note">Time</p>
-            <p className="mt-2 text-base text-truffle">{formatTime(event.dateTime)} WIB</p>
+            <p className="mt-2 text-base text-truffle">
+              {event.endDateTime
+                ? `${formatTime(event.dateTime)} — ${formatTime(event.endDateTime)} WIB`
+                : `${formatTime(event.dateTime)} WIB`}
+            </p>
           </div>
         </div>
 

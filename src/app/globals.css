@@ -3,18 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --color-ivory: #fffaf5;
-  --color-cream: #f8efe7;
-  --color-champagne: #ead7c7;
-  --color-petal: #efd7df;
-  --color-rose: #d86d98;
-  --color-gold: #bd8d4a;
-  --color-ink: #4a302f;
-  --color-muted: #7e6662;
-  --font-display: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", "Book Antiqua",
-    "Cormorant Garamond", Georgia, serif;
-  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", "Manrope", Arial, sans-serif;
-  --font-accent: "Snell Roundhand", "Apple Chancery", "Great Vibes", "Segoe Script", cursive;
+  /* Monochrome luxury palette */
+  --color-ivory: #fafafa;
+  --color-cream: #f3f3f1;
+  --color-champagne: #e5e5e3;
+  --color-petal: #dedede;
+  --color-rose: #333333;
+  --color-gold: #3a3a3a;
+  --color-ink: #111111;
+  --color-muted: #6f6f6f;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", "URW Palladio L",
+    "Book Antiqua", "Cormorant Garamond", Georgia, serif;
+
+  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", "Manrope", Arial,
+    sans-serif;
+
+  --font-accent: "Snell Roundhand", "Apple Chancery", "Great Vibes",
+    "Segoe Script", cursive;
 }
 
 html {
@@ -23,36 +29,76 @@ html {
 
 body {
   min-height: 100vh;
+
   background:
-    radial-gradient(circle at top left, rgba(239, 215, 223, 0.92), transparent 30%),
-    radial-gradient(circle at 88% 10%, rgba(247, 233, 216, 0.86), transparent 24%),
-    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.64), transparent 28%),
-    linear-gradient(180deg, #fffaf5 0%, #f9f1ea 42%, #f2e4da 100%);
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.95),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 10%,
+      rgba(220, 220, 220, 0.5),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 50% 28%,
+      rgba(255, 255, 255, 0.75),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #fafafa 0%,
+      #f3f3f3 42%,
+      #e8e8e8 100%
+    );
+
   color: var(--color-ink);
   font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
 }
 
+/* Subtle monochrome grid texture */
 body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
+
   background:
-    linear-gradient(transparent 95%, rgba(189, 141, 74, 0.045) 100%),
-    linear-gradient(90deg, transparent 95%, rgba(189, 141, 74, 0.045) 100%);
+    linear-gradient(
+      transparent 95%,
+      rgba(0, 0, 0, 0.025) 100%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 95%,
+      rgba(0, 0, 0, 0.025) 100%
+    );
+
   background-size: 72px 72px;
   content: "";
   opacity: 0.22;
   pointer-events: none;
 }
 
+/* Soft monochrome vignette */
 body::after {
   position: fixed;
   inset: 0;
   z-index: -1;
+
   background:
-    radial-gradient(circle at center, transparent 50%, rgba(111, 77, 68, 0.09) 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 30%);
+    radial-gradient(
+      circle at center,
+      transparent 50%,
+      rgba(0, 0, 0, 0.06) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.45),
+      transparent 30%
+    );
+
   content: "";
   pointer-events: none;
 }
@@ -67,7 +113,7 @@ textarea {
 }
 
 ::selection {
-  background: rgba(212, 140, 154, 0.26);
+  background: rgba(0, 0, 0, 0.14);
 }
 
 @layer base {
@@ -80,6 +126,10 @@ textarea {
 }
 
 @layer components {
+  /* ========================================
+     SECTION
+     ======================================== */
+
   .section-shell {
     @apply scroll-mt-28 py-20 sm:py-24 lg:py-28;
   }
@@ -88,25 +138,43 @@ textarea {
     @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10;
   }
 
+  /* ========================================
+     CARDS
+     ======================================== */
+
   .surface-card {
     @apply rounded-[2rem] border border-white/80 bg-white/80 shadow-soft backdrop-blur-md;
   }
 
   .secondary-card {
-    @apply rounded-[1.85rem] border border-[#ead6ca] bg-white/[0.96] shadow-card;
+    @apply rounded-[1.85rem] border border-[#d8d8d8] bg-white/[0.96] shadow-card;
   }
+
+  /* ========================================
+     BUTTONS
+     ======================================== */
 
   .button-primary {
     @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-card transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-gold-deep hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2;
-    background-image: linear-gradient(135deg, #d39d58 0%, #bd8d4a 46%, #9f7338 100%);
+
+    background-image: linear-gradient(
+      135deg,
+      #333333 0%,
+      #171717 50%,
+      #050505 100%
+    );
   }
 
   .button-secondary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-[#d9b389] bg-white/80 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-truffle transition-all duration-200 ease-out hover:border-gold hover:bg-white hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40 focus-visible:ring-offset-2;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-[#cfcfcf] bg-white/80 px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-truffle transition-all duration-200 ease-out hover:border-gold hover:bg-white hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40 focus-visible:ring-offset-2;
   }
 
+  /* ========================================
+     SECTION LABEL
+     ======================================== */
+
   .section-kicker {
-    @apply mb-4 inline-flex items-center gap-3 rounded-full border border-[#d9beaa] bg-white/80 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.38em] text-gold;
+    @apply mb-4 inline-flex items-center gap-3 rounded-full border border-[#d2d2d2] bg-white/80 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.38em] text-gold;
   }
 
   .section-title {
@@ -117,45 +185,88 @@ textarea {
     @apply mt-4 max-w-2xl text-base leading-8 text-truffle-soft sm:text-lg;
   }
 
+  /* ========================================
+     EDITORIAL CONTAINER
+     ======================================== */
+
   .editorial-shell {
     @apply relative overflow-hidden rounded-[2.25rem] border border-white/80 bg-white/70 shadow-soft backdrop-blur-xl;
+
     box-shadow:
-      0 24px 60px rgba(120, 84, 73, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      0 24px 60px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65);
   }
+
+  /* ========================================
+     PHOTO FRAME
+     ======================================== */
 
   .photo-frame {
     @apply relative overflow-hidden rounded-[2.2rem] border border-white/80 bg-sand shadow-card;
+
     box-shadow:
-      0 20px 50px rgba(109, 79, 71, 0.14),
-      inset 0 1px 0 rgba(255, 255, 255, 0.44);
+      0 20px 50px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
+
+  /* ========================================
+     PHOTO OVERLAY
+     ======================================== */
 
   .photo-tint {
     background:
-      linear-gradient(180deg, rgba(48, 27, 26, 0.04) 0%, rgba(48, 27, 26, 0.48) 100%),
-      linear-gradient(180deg, rgba(255, 247, 241, 0) 42%, rgba(255, 247, 241, 0.12) 100%);
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.02) 0%,
+        rgba(0, 0, 0, 0.45) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 42%,
+        rgba(255, 255, 255, 0.08) 100%
+      );
   }
 
+  /* ========================================
+     DIVIDER
+     ======================================== */
+
   .editorial-divider {
-    @apply h-px w-24 bg-gradient-to-r from-gold/0 via-gold/60 to-gold/0;
+    @apply h-px w-24 bg-gradient-to-r from-gold/0 via-gold/50 to-gold/0;
   }
+
+  /* ========================================
+     SMALL TEXT
+     ======================================== */
 
   .eyebrow-note {
     @apply text-[0.72rem] uppercase tracking-[0.34em] text-mink-soft;
   }
 
+  /* ========================================
+     IMAGE POSITIONING
+     ======================================== */
+
   .art-directed-image {
     object-position: var(--image-position-mobile, center);
   }
+
+  /* ========================================
+     SCRIPT ACCENT
+     ======================================== */
 
   .script-accent {
     @apply font-accent text-[2.4rem] leading-none text-script sm:text-[3rem];
   }
 
+  /* ========================================
+     SCROLL REVEAL
+     ======================================== */
+
   .reveal-section {
     opacity: 0;
     transform: translateY(32px);
+
     transition:
       opacity 600ms ease-out,
       transform 600ms ease-out;
@@ -167,11 +278,22 @@ textarea {
   }
 }
 
+/* ========================================
+   RESPONSIVE IMAGE POSITION
+   ======================================== */
+
 @media (min-width: 768px) {
   .art-directed-image {
-    object-position: var(--image-position-desktop, var(--image-position-mobile, center));
+    object-position: var(
+      --image-position-desktop,
+      var(--image-position-mobile, center)
+    );
   }
 }
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
   html {

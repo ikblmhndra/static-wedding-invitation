@@ -51,7 +51,7 @@ export function GiftSection({ accounts, qrisImage }: GiftSectionProps) {
             </div>
           </Reveal>
 
-          <Reveal delay={140}>
+          {/* <Reveal delay={140}>
             <div className="editorial-shell flex h-full flex-col items-center justify-center px-6 py-8 text-center sm:px-8">
               <p className="eyebrow-note">QRIS</p>
               <h3 className="mt-3 text-3xl text-truffle">Scan for a simple transfer</h3>
@@ -69,7 +69,7 @@ export function GiftSection({ accounts, qrisImage }: GiftSectionProps) {
                 details are ready.
               </p>
             </div>
-          </Reveal>
+          </Reveal> */}
         </div>
       </div>
     </section>
