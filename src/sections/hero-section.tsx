@@ -137,10 +137,7 @@ export function HeroSection({ label, names, hero, bride, groom }: HeroSectionPro
                   />
                 </div>
                 <div className="mt-4 flex items-center justify-between gap-3">
-                  <p className="font-display text-2xl text-truffle">{groom.shortName}</p>
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/20 bg-[linear-gradient(180deg,rgba(221,186,124,0.16),rgba(221,186,124,0.04))] text-gold">
-                    <Heart className="h-4 w-4" />
-                  </div>
+                  <p className="flex-1 font-display text-center text-2xl text-truffle">{groom.shortName}</p>
                 </div>
               </div>
 

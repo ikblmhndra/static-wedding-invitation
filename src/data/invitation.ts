@@ -46,9 +46,9 @@ export type GalleryItem = {
 export const invitationData = {
   coupleLabel: "The Wedding of",
   bride: {
-    shortName: "Kiara",
-    fullName: "Kiara Lubis",
-    parents: "Beloved daughter of Mr. Surya Mahendra & Mrs. Lestari Puspita",
+    shortName: "Bidadari",
+    fullName: "Bidadari Kiara Ramadhani Lubis S.T.P",
+    parents: "Beloved daughter of Tigor H. Asnawi Lubis & Almh Mira Ruthie Suryo",
     description:
       "Graceful, warm, and endlessly thoughtful, Kiara carries beauty in the smallest details and brings a sense of calm to every room she enters.",
     roleNote: "A heart for beauty, tenderness, and quiet joy.",
@@ -63,8 +63,8 @@ export const invitationData = {
   } satisfies PersonProfile,
   groom: {
     shortName: "Dimas",
-    fullName: "Dimas Tri Saptaji",
-    parents: "Beloved son of Mr. Aditya Pranowo & Mrs. Ratih Kusumaningrum",
+    fullName: "Dimas Tri Saptaji S.T",
+    parents: "Beloved son of Zein Djaeni & Wiwin",
     description:
       "Steady, sincere, and deeply dependable, Dimas leads with quiet confidence and finds meaning in sincerity, faith, and thoughtful devotion.",
     roleNote: "Rooted in calm, faith, and enduring affection.",
@@ -79,7 +79,7 @@ export const invitationData = {
   } satisfies PersonProfile,
   hero: {
     dateTime: "2026-09-05T09:00:00+07:00",
-    venue: "The Manor Andara, Jakarta",
+    venue: "Kalibata House 21",
     eyebrow: "A New Chapter Begins",
     quote:
       "With grateful hearts and joyful anticipation, we invite you to witness the beginning of our forever.",
