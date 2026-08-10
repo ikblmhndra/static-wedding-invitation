@@ -49,7 +49,7 @@ export const invitationData = {
   bride: {
     shortName: "Bidadari",
     fullName: "Bidadari Kiara Ramadhani Lubis, S.T.P",
-    parents: "Beloved daughter of Tigor H. Asnawi Lubis & Almh Mira Ruthie Suryo",
+    parents: "Beloved daughter of Tigor H. Asnawi Lubis & Almh. Mira Ruthie Suryo",
     description:
       "Graceful, warm, and endlessly thoughtful, Kiara carries beauty in the smallest details and brings a sense of calm to every room she enters.",
     roleNote: "A heart for beauty, tenderness, and quiet joy.",
@@ -130,15 +130,15 @@ export const invitationData = {
     }
   ] satisfies StoryBeat[],
   events: [
-    {
-      title: "Akad Nikah",
-      dateTime: "2026-09-05T10:00:00+07:00",
-      location: "Kalibata House 21",
-      address:
-        "Jl. Kalibata Utara II No.21, RT.1/RW.7, Kalibata, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12740",
-      mapUrl:
-        "https://maps.app.goo.gl/BbKSVBuZ5Y7aDkQi7"
-    },
+    // {
+    //   title: "Akad Nikah",
+    //   dateTime: "2026-09-05T10:00:00+07:00",
+    //   location: "Kalibata House 21",
+    //   address:
+    //     "Jl. Kalibata Utara II No.21, RT.1/RW.7, Kalibata, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12740",
+    //   mapUrl:
+    //     "https://maps.app.goo.gl/BbKSVBuZ5Y7aDkQi7"
+    // }
     {
       title: "Resepsi",
       dateTime: "2026-09-05T11:00:00+07:00",
