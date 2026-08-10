@@ -153,12 +153,12 @@ export function OpeningScreen({
                     </div>
                   </div>
                 </div>
-                <div className="ml-auto max-w-[17rem] rounded-[1.8rem] border border-white/15 bg-black/10 px-6 py-5 backdrop-blur-md">
+                {/* <div className="ml-auto max-w-[17rem] rounded-[1.8rem] border border-white/15 bg-black/10 px-6 py-5 backdrop-blur-md">
                   <p className="eyebrow-note text-white/[0.62]">A timeless celebration</p>
                   <p className="mt-3 font-display text-[1.9rem] leading-tight text-white">
                     Soft florals, warm vows, and a night shaped by quiet romance.
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
