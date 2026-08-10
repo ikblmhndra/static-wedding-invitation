@@ -11,7 +11,7 @@ import { GallerySection } from "@/sections/gallery-section";
 import { GiftSection } from "@/sections/gift-section";
 import { HeroSection } from "@/sections/hero-section";
 import { RsvpSection } from "@/sections/rsvp-section";
-import { StorySection } from "@/sections/story-section";
+// import { StorySection } from "@/sections/story-section";
 
 export default function HomePage() {
   const names = `${invitationData.bride.shortName} & ${invitationData.groom.shortName}`;
@@ -41,7 +41,7 @@ export default function HomePage() {
           groom={invitationData.groom}
         />
         <CoupleSection bride={invitationData.bride} groom={invitationData.groom} />
-        <StorySection items={invitationData.story} />
+        {/* <StorySection items={invitationData.story} /> */}
         <EventsSection events={invitationData.events} />
         <CountdownSection targetDate={invitationData.hero.dateTime} />
         <GallerySection items={invitationData.gallery} />
