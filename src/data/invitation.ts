@@ -78,7 +78,7 @@ export const invitationData = {
     }
   } satisfies PersonProfile,
   hero: {
-    dateTime: "2026-11-21T09:00:00+07:00",
+    dateTime: "2026-09-05T09:00:00+07:00",
     venue: "The Manor Andara, Jakarta",
     eyebrow: "A New Chapter Begins",
     quote:
