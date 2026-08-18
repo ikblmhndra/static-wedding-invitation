@@ -19,7 +19,7 @@ export function RsvpSection() {
                 <SectionHeading
                   kicker="RSVP"
                   title="Kindly let us know if you can join us."
-                  description="This note of reply is kept intentionally simple, graceful, and static-first."
+                  description="We would be delighted to have you celebrate with us. Please RSVP by filling out the form below."
                 />
               </div>
               <div className="secondary-card border-white/70 bg-white/[0.88] px-6 py-6 sm:px-8">
