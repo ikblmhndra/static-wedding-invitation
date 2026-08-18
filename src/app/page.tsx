@@ -1,5 +1,4 @@
 import { Navigation } from "@/components/navigation";
-import { NetlifyFormRegistration } from "@/components/netlify-form-registration";
 import { OpeningScreen } from "@/components/opening-screen";
 import { invitationData } from "@/data/invitation";
 import { formatLongDate } from "@/lib/format";
@@ -20,7 +19,6 @@ export default function HomePage() {
 
   return (
     <>
-      <NetlifyFormRegistration />
       <OpeningScreen
         label={invitationData.coupleLabel}
         names={names}

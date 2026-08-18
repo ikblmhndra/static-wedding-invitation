@@ -1,11 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 
 import { useGuestName } from "@/components/guest-name-card";
+import { getSupabase } from "@/lib/supabase";
 
 export function RsvpForm() {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [messagePreview, setMessagePreview] = useState("");
   const guestName = useGuestName();
   const guestNameInputRef = useRef<HTMLInputElement | null>(null);
@@ -18,35 +22,41 @@ export function RsvpForm() {
     guestNameInputRef.current.value = guestName;
   }, [guestName]);
 
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const guestNameValue = String(formData.get("guestName") ?? "").trim();
+    const attendance = String(formData.get("attendance") ?? "");
+    const guestCount = Number(formData.get("guestCount"));
+    const message = String(formData.get("message") ?? "").trim();
+
+    try {
+      const { error } = await getSupabase().from("rsvps").insert({
+        guest_name: guestNameValue,
+        attendance,
+        guest_count: guestCount,
+        message: message || null
+      });
+
+      if (error) {
+        setSubmitError("We could not send your RSVP. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      router.push("/thank-you/");
+    } catch {
+      setSubmitError("We could not send your RSVP. Please try again.");
+      setIsSubmitting(false);
+    }
+  }
+
   return (
-    <form
-      name="wedding-rsvp"
-      method="POST"
-      action="/thank-you/"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      onSubmit={() => setIsSubmitting(true)}
-      className="grid gap-5"
-    >
-      {/*
-        RSVP implementation options:
-        A. Default: Netlify Forms
-           Keep data-netlify, form-name, and action="/thank-you/".
-
-        B. Google Forms
-           Replace action with your Google Forms endpoint and rename the fields to entry.<id>.
-
-        C. Email via serverless function
-           Replace action with /api/rsvp or /.netlify/functions/rsvp-email and handle email delivery there.
-      */}
-      <input type="hidden" name="form-name" value="wedding-rsvp" />
-      <p className="hidden">
-        <label htmlFor="bot-field">
-          Do not fill this out if you are human:
-          <input id="bot-field" name="bot-field" />
-        </label>
-      </p>
-
+    <form onSubmit={handleSubmit} className="grid gap-5">
       {guestName ? (
         <div className="rounded-[1.5rem] border border-gold/15 bg-[linear-gradient(180deg,rgba(221,186,124,0.12),rgba(221,186,124,0.04))] px-4 py-4">
           <p className="eyebrow-note">Invitation addressed to</p>
@@ -118,6 +128,12 @@ export function RsvpForm() {
         <div className="rounded-[1.5rem] border border-[#e5d6c8] bg-[#f8f1e9] px-5 py-4 text-sm leading-7 text-[#776862]">
           <p className="font-medium text-truffle">Preview of your note:</p>
           <p className="mt-2 whitespace-pre-wrap">{messagePreview}</p>
+        </div>
+      ) : null}
+
+      {submitError ? (
+        <div className="rounded-[1.5rem] border border-[#e5b8b8] bg-[#fdf3f3] px-5 py-4 text-sm leading-7 text-[#8a4a4a]">
+          {submitError}
         </div>
       ) : null}
 

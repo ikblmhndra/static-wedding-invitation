@@ -3,6 +3,7 @@ import { Mail } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { RsvpForm } from "@/components/rsvp-form";
 import { SectionHeading } from "@/components/section-heading";
+import { WishesList } from "@/components/wishes-list";
 
 export function RsvpSection() {
   return (
@@ -18,11 +19,12 @@ export function RsvpSection() {
                 <SectionHeading
                   kicker="RSVP"
                   title="Kindly let us know if you can join us."
-                  description="This note of reply is kept intentionally simple, graceful, and static-first. The current setup uses Netlify Forms by default."
+                  description="This note of reply is kept intentionally simple, graceful, and static-first."
                 />
               </div>
               <div className="secondary-card border-white/70 bg-white/[0.88] px-6 py-6 sm:px-8">
                 <RsvpForm />
+                <WishesList />
               </div>
             </div>
           </div>

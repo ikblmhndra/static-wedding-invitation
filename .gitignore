@@ -1,4 +1,7 @@
 /.codex
+/.env
+/.env.local
+/.env.*.local
 /.eslintrc.json
 /.next
 /node_modules
