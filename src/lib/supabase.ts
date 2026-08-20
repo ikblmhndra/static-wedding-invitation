@@ -32,6 +32,7 @@ export type RsvpInsert = {
 export type RsvpWish = {
   guest_name: string;
   attendance: string;
-  message: string;
+  guest_count: number;
+  message: string | null;
   created_at: string;
 };
